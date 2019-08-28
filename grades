@@ -1,0 +1,60 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+void readData(double grades[], int size);
+double calcAverage(double grades[], int size);
+int main()
+{
+	double grades[5] = { 95.0, 74.5, 82.1, 70.5, 50.0 };
+	double avg = 0.0;
+
+	readData(grades, 5);
+	avg = calcAverage(grades, 5);
+	cout << "The average grade is " << avg<<endl;
+
+	//Bubble Sort Algorithm
+	for (int pass = 0; pass < 4; pass++)
+	{
+		for (int comp = 0; comp < 4; comp++)
+		{
+			if (grades[comp] > grades[comp + 1])
+			{
+				//Swap the two values
+				double temp = grades[comp];
+				grades[comp] = grades[comp + 1];
+				grades[comp + 1] = temp;
+			}
+		}
+	}
+
+	for (int i = 0; i < 5; i++)
+		cout << grades[i] << " ";
+
+	cout << endl;
+
+
+	system("pause");
+	return 0;
+}
+double calcAverage(double grades[], int size)
+{
+	double avg = 0.0;
+	double sum = 0.0;
+
+
+	for (int i = 0; i < 5; i++)
+	{
+		sum = sum + grades[i];
+	}
+	avg = sum / 5.0;
+	return avg;
+
+}
+void readData(double grades[], int size)
+{
+	for (int i = 0; i < size; i++){
+		cout << "Enter student grade: ";
+		cin >> grades[i];
+	}
+}
